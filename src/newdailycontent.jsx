@@ -106,7 +106,10 @@ function Contentdaily(props)
     }
   }
   
-
+    function oninputchange()
+    {
+      setloginval(loginval+1);
+    }
 
   
     function updateuserbuttonclick(key)
@@ -207,19 +210,19 @@ function Contentdaily(props)
                     <label class="font-size: 1rem" >Username:</label>
                   </div>
                   <div class="col col-12 col-md-2">
-                    <input type="text" value ={tempusername || ""} ref={usernameInput} className="filterinput "  />
+                    <input type="text" onChange={function(){oninputchange()}} value ={tempusername || ""} ref={usernameInput} className="filterinput "  />
                   </div>
                   <div class="col col-12 col-md-1">
                     <label class="font-size: 1rem" >Password:</label>
                   </div>
                   <div class="col col-12 col-md-2">
-                    <input value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
+                    <input value ={temppassword || ""}  onChange={function(){oninputchange()}} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
                   </div>
                   <div class="col col-12 col-md-1">
                     <label class="font-size: 1rem" >Phone no:</label>
                   </div>
                   <div class="col col-12 col-md-2">
-                    <input value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
+                    <input value ={tempphoneno || ""}  onChange={function(){oninputchange()}} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
                   </div>
                   <div class="col col-12 col-md-1">
                     <label class="font-size: 1rem" >Set Status:</label>
@@ -252,19 +255,19 @@ function Contentdaily(props)
                   <label class="font-size: 1rem" >Username:</label>
                 </div>
                 <div class="col col-12 col-md-2">
-                  <input type="text" ref={usernameInput} value ={tempusername || ""} className="filterinput " placeholder="" />
+                  <input type="text"  onChange={function(){oninputchange()}} ref={usernameInput} value ={tempusername || ""} className="filterinput " placeholder="" />
                 </div>
                 <div class="col col-12 col-md-1">
                   <label class="font-size: 1rem" >Password:</label>
                 </div>
                 <div class="col col-12 col-md-2">
-                  <input value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
+                  <input  onChange={function(){oninputchange()}} value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
                 </div>
                 <div class="col col-12 col-md-1">
                   <label class="font-size: 1rem" >Phone no:</label>
                 </div>
                 <div class="col col-12 col-md-2">
-                  <input value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
+                  <input  onChange={function(){oninputchange()}} value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
                 </div>
                 <div class="col col-12 col-md-1">
                   <label class="font-size: 1rem" >Set Status:</label>
@@ -296,19 +299,19 @@ function Contentdaily(props)
                   <label class="font-size: 1rem" >Username:</label>
                 </div>
                 <div class="col col-12 col-md-2">
-                  <input type="text" ref={usernameInput} className="filterinput " value ={tempusername || ""} placeholder=""  />
+                  <input  onChange={function(){oninputchange()}} type="text" ref={usernameInput} className="filterinput " value ={tempusername || ""} placeholder=""  />
                 </div>
                 <div class="col col-12 col-md-1">
                   <label class="font-size: 1rem" >Password:</label>
                 </div>
                 <div class="col col-12 col-md-2">
-                  <input value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
+                  <input  onChange={function(){oninputchange()}} value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
                 </div>
                 <div class="col col-12 col-md-1">
                   <label class="font-size: 1rem" >Phone no:</label>
                 </div>
                 <div class="col col-12 col-md-2">
-                  <input value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
+                  <input  onChange={function(){oninputchange()}} value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
                 </div>
                 <div class="col col-12 col-md-1">
                   <label class="font-size: 1rem" >Set Status:</label>
