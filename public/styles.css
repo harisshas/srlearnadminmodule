@@ -1,0 +1,145 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: honeydew;
+}
+.root
+{
+    margin: 0;
+    padding: 0;
+}
+.footer {
+    position: fixed;
+    overflow: hidden;
+    height:2rem;
+    bottom: 0;
+    width: 100%;
+    background-color: honeydew;
+    margin:0rem;
+    text-align: center;
+    padding-top: 1.5rem;
+}
+.header
+{
+    margin:0;
+    width: 100%;
+    background-color:aquamarine;
+    color:black;
+}
+.container
+{
+    margin:0;    
+    padding-bottom:2rem;
+    width: 100%;
+    color:black;
+}
+.navbar-brand
+{
+    color:black;
+    font-weight:normal;
+    font-family: sans-serif, 'Times New Roman', Times, serif;
+    font-size:2.0rem;
+}
+.content
+{
+    background-color:honeydew;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left:1rem;
+    margin-right:1rem;
+    margin-bottom:5rem;
+}
+.module
+{
+    background-color:white;
+    margin-left:1rem;
+    margin-right:1rem;
+    margin-top:1rem;
+    margin-right:1rem;
+    border-radius: 7px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px #ccc;
+}
+.content-heading
+{
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:1.5rem;
+}
+.content-text
+{
+    font-weight:normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:1.5rem;
+}
+.chartcol2
+{
+    margin: 3rem;
+}
+.chartcol1
+{
+    height:32rem;
+    width:40rem;
+    margin: 0.5rem;
+}
+.chartitle
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.commentpar
+{
+    color:red;
+}
+.listbutton
+{
+    margin-top: 0.5rem;
+}
+.unitname
+{
+    text-align: left;
+}
+.graphpagetitle
+{
+    text-align: center;
+}
+.datepickerlabel
+{
+    text-align: center;
+    font-size: 2rem;
+}
+.perdatebutton
+{
+    margin-top: 0rem;
+}
+.dailydetailcol
+{
+    margin:0;
+}
+.paramnamedaily
+{
+    text-align: left;
+    margin-left: 3rem;
+}
+.subrowdailydetail
+{
+    margin:0;
+    padding: 0;
+}
+.containerrowdailydetail
+{
+    margin:0;
+    padding: 0;
+}
+.hrdatatableperiod
+{
+    margin:0;
+    padding: 0;
+}
+.navbarbuttoncust
+{
+    margin-left:0.5rem;
+}

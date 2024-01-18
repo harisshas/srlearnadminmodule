@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+
+.Table {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+filterinput {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border: 2px solid forestgreen;
+  width: 100%;
+  height: fit-content;
+}
+
+.thdailydata {
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-size: calc(3px + 2vmin);
+  height: 35px;
+  width: fit-content;
+}
+
+.thperioddata {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+  font-size: calc(2px + 1vmin);;
+  height: 35px;
+  width: fit-content;
+}
+
+.tddailydata {
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-size: calc(2px + 2vmin);
+  height: 35px;
+  width:fit-content
+}
+
+.tdperioddata {
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-size: calc(2px + 1vmin);;
+  height: fit-content;
+  width:fit-content
+}
+
+.pagebreak 
+{
+  page-break-after: always
+}
