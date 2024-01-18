@@ -30,7 +30,7 @@ function Contentdaily(props)
   const [loading, setLoading] = useState(true);
   const [loginval,setloginval]=useState(0);
   const [error, setError] = useState(null);
-  const [selected, setSelected] = useState(tempstatus);
+  
 
 
   
@@ -115,7 +115,7 @@ function Contentdaily(props)
       tempusername=masterdatalist[key-1].username;
       tempphoneno=masterdatalist[key-1].phoneno;
       temppassword=masterdatalist[key-1].password;
-      tempstatus=masterdatalist[key-1].status;
+      //tempstatus=masterdatalist[key-1].status;
       keyselected=key;
       setloginval(loginval+1);
     }
@@ -228,7 +228,7 @@ function Contentdaily(props)
                     <label class="font-size: 1rem" >Set Status:</label>
                   </div>
                   <div class="col col-12 col-md-1">
-                    <select value ={tempstatus} ref={statusinput} onChange={handleChange} name="statusoptions" id="statusoptions">
+                    <select ref={statusinput} name="statusoptions" id="statusoptions">
                           <option value="Approved">Approved</option>
                           <option value="Pending">Pending</option>
                           <option value="Blocked">Blocked</option>
@@ -273,7 +273,7 @@ function Contentdaily(props)
                   <label class="font-size: 1rem" >Set Status:</label>
                 </div>
                 <div class="col col-12 col-md-1">
-                    <select value ={tempstatus} ref={statusinput} onChange={handleChange} name="statusoptions" id="statusoptions">
+                    <select ref={statusinput} name="statusoptions" id="statusoptions">
                           <option value="Approved">Approved</option>
                           <option value="Pending">Pending</option>
                           <option value="Blocked">Blocked</option>
@@ -317,7 +317,7 @@ function Contentdaily(props)
                   <label class="font-size: 1rem" >Set Status:</label>
                 </div>
                 <div class="col col-12 col-md-1">
-                  <select value ={tempstatus} ref={statusinput} onChange={handleChange} name="statusoptions" id="statusoptions">
+                  <select ref={statusinput} name="statusoptions" id="statusoptions">
                           <option value="Approved">Approved</option>
                           <option value="Pending">Pending</option>
                           <option value="Blocked">Blocked</option>
