@@ -144,10 +144,7 @@ function Contentdaily(props)
         displaydate=dd+'-'+mm+'-'+yyyy;
         return senddate;
       }
-      const handleChange = event => {
-        console.log(event.target.value);
-        setSelected(event.target.value);
-      };
+
       function gettodaysdate()
       {
         let today=new Date();
