@@ -93,6 +93,8 @@ function Contentdaily(props)
       {
         statusupdate="blocked";
       }
+      //console.log(usernameInput.current.value);
+      //console.log(userid);
       //https://srlearnapi.onrender.com/updateuser/1705232820726/username10/password10/56789425/active
       const dataresp = await axios.get('https://srlearnapi.onrender.com/updateuser/'+userid+'/'+usernameInput.current.value+'/'+passwordInput.current.value+'/'+phonenoInput.current.value+'/'+statusupdate);
       const datarespval= await dataresp.data;
@@ -108,13 +110,18 @@ function Contentdaily(props)
   
     function oninputchange()
     {
+      //console.log(usernameInput.current.value);
+      tempusername=usernameInput.current.value;
+      tempphoneno=phonenoInput.current.value;
+      temppassword=passwordInput.current.value;
+
       setloginval(loginval+1);
     }
 
   
     function updateuserbuttonclick(key)
     {
-      console.log(masterdatalist[key-1]);
+      //console.log(masterdatalist[key-1]);
       tempusername=masterdatalist[key-1].username;
       tempphoneno=masterdatalist[key-1].phoneno;
       temppassword=masterdatalist[key-1].password;
@@ -125,7 +132,9 @@ function Contentdaily(props)
 
     function updateuserdetailsbuttonclick()
     {
-      updateuserinfo(masterdatalist[keyselected-1].userid);
+      //console.log("keyselected: "+keyselected);
+      //console.log(masterdatalist[keyselected-1]);
+      updateuserinfo(masterdatalist[keyselected-1]._id);
     }
 
       function getdateinformat(recdate)
