@@ -31,17 +31,13 @@ function Contentdaily(props)
   const [loginval,setloginval]=useState(0);
   const [error, setError] = useState(null);
   
-
-
-  
-
   useEffect(() => 
   {
     
     fetchData(gettodaysdate(),props.passondata);
   }, []);
 
-  async function fetchData(datereq,shopreq) 
+  async function fetchData() 
   {
     try 
     {
@@ -65,7 +61,6 @@ function Contentdaily(props)
       }
       //console.log(datalist);
       masterdatalist=datalist;
-      htmlcomment="";
       setData(data);
       setLoading(false);
     } 
@@ -99,7 +94,7 @@ function Contentdaily(props)
       const dataresp = await axios.get('https://srlearnapi.onrender.com/updateuser/'+userid+'/'+usernameInput.current.value+'/'+passwordInput.current.value+'/'+phonenoInput.current.value+'/'+statusupdate);
       const datarespval= await dataresp.data;
       htmlcomment="Data updated successfully";
-      setloginval(loginval+1);
+      fetchData();
     } 
     catch (error) 
     {
