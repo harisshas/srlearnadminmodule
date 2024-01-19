@@ -65,8 +65,10 @@ function Contentcourses(props)
   {
     try 
     {
+      let currentcoursedesc=coursedescriptionInput.current.value;
+      coursedesc_replacedspaces=currentcoursedesc.replaceall(" ", "_");
       ///updatecourse/:courseidentered/:coursenameentered/:videolinkentered/:descentered
-      const dataresp = await axios.get('https://srlearnapi.onrender.com/updatecourse/'+courseid+'/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedescriptionInput.current.value);
+      const dataresp = await axios.get('https://srlearnapi.onrender.com/updatecourse/'+courseid+'/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedesc_replacedspaces);
       const datarespval= await dataresp.data;
       htmlcomment="Course updated successfully";
       tempcoursename="";
@@ -87,7 +89,9 @@ function Contentcourses(props)
     try 
     {
       // /createcourse/:coursenameentered/:videolinkentered/:descentered
-      const dataresp = await axios.get('https://srlearnapi.onrender.com/createcourse/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedescriptionInput.current.value);
+      let currentcoursedesc=coursedescriptionInput.current.value;
+      coursedesc_replacedspaces=currentcoursedesc.replaceall(" ", "_");
+      const dataresp = await axios.get('https://srlearnapi.onrender.com/createcourse/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedesc_replacedspaces);
       const datarespval= await dataresp.data;
       htmlcomment="Course created successfully";
       tempcoursename="";
