@@ -108,6 +108,43 @@ function Contentdaily(props)
         setLoading(false);
     }
   }
+
+  async function createuserinfo() 
+  {
+    try 
+    {
+      let statusupdate="active";
+      if(statusinput.current.value=="Approved")
+      {
+        statusupdate="active";
+      }
+      else if(statusinput.current.value=="Pending")
+      {
+        statusupdate="apppending";
+      }
+      else if(statusinput.current.value=="Blocked")
+      {
+        statusupdate="blocked";
+      }
+      //console.log(usernameInput.current.value);
+      //console.log(userid);
+      //https://srlearnapi.onrender.com/updateuser/1705232820726/username10/password10/56789425/active
+      const dataresp = await axios.get('https://srlearnapi.onrender.com/createuser/'+usernameInput.current.value+'/'+passwordInput.current.value+'/'+phonenoInput.current.value+'/'+statusupdate);
+      const datarespval= await dataresp.data;
+      htmlcomment="User created successfully";
+      tempusername="";
+      tempphoneno="";
+      temppassword="";
+      tempstatus="Approved";
+      mode="Create";
+      fetchData();
+    } 
+    catch (error) 
+    {
+        setError(error);
+        setLoading(false);
+    }
+  }
   
     function oninputchange()
     {
@@ -136,7 +173,15 @@ function Contentdaily(props)
     {
       //console.log("keyselected: "+keyselected);
       //console.log(masterdatalist[keyselected-1]);
-      updateuserinfo(masterdatalist[keyselected-1]._id);
+      if(mode=="Update")
+      {
+        updateuserinfo(masterdatalist[keyselected-1]._id);
+      }
+      else if(mode=="Create")
+      {
+        createuserinfo();
+      }
+      
     }
 
       function getdateinformat(recdate)
