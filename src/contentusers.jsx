@@ -13,6 +13,8 @@ let temppassword="";
 let tempstatus="Approved";
 let keyselected;
 
+let displaydate="";
+
 let mode="Create";
 
 function Contentusers(props) 
