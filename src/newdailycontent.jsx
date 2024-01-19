@@ -96,6 +96,7 @@ function Contentdaily(props)
       tempusername="";
       tempphoneno="";
       temppassword="";
+      tempstatus="Approved";
       fetchData();
     } 
     catch (error) 
@@ -122,7 +123,7 @@ function Contentdaily(props)
       tempusername=masterdatalist[key-1].username;
       tempphoneno=masterdatalist[key-1].phoneno;
       temppassword=masterdatalist[key-1].password;
-      //tempstatus=masterdatalist[key-1].status;
+      tempstatus=masterdatalist[key-1].status;
       keyselected=key;
       setloginval(loginval+1);
     }
