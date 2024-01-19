@@ -4,15 +4,15 @@ import axios, * as others from 'axios';
 import { useState,useEffect, useMemo } from "react";
 
 
-let sortkey={text:"",slno:"▲",username:"♢",phoneno:"♢",password:"♢",status:"♢",update:"♢"};
+let sortkey={text:"",slno:"▲",coursename:"♢",videolink:"♢",coursedescription:"♢",update:"♢"};
 let datalist=[];
 let masterdatalist=[];
 
 let htmlcomment="";
-let tempusername="";
-let tempphoneno="";
-let temppassword="";
-let tempstatus="Approved";
+let tempcoursename="";
+let tempvideolink="";
+let tempcoursedescription="";
+
 let keyselected;
 
 let displaydate="";
@@ -21,13 +21,12 @@ let mode="Create";
 
 function Contentcourses(props) 
 {
-  let usernameInput = React.createRef();
-  let passwordInput = React.createRef();
-  let phonenoInput = React.createRef();
-  let statusinput = React.createRef();
+  let coursenameInput = React.createRef();
+  let videolinkInput = React.createRef();
+  let coursedescriptionInput = React.createRef();
 
-  let filterbyusernameinput = React.createRef();
-  let filterbyphonenoinput = React.createRef();
+  let filterbycoursenameinput = React.createRef();
+  let filterbycoursecontentinput = React.createRef();
   
 
   const [data, setData] = useState(null);
@@ -44,23 +43,11 @@ function Contentcourses(props)
   {
     try 
     {
-      const data = await axios.get('https://srlearnapi.onrender.com/userlist');
+      const data = await axios.get('https://srlearnapi.onrender.com/courselist');
       datalist= await data.data;
       for(let i=0;i<datalist.length;i++)
       {
         datalist[i].slno=i+1;
-        if(datalist[i].status=="active")
-        {
-          datalist[i].status="Approved";
-        }
-        else if(datalist[i].status=="apppending")
-        {
-          datalist[i].status="Pending";
-        }
-        else if(datalist[i].status=="blocked")
-        {
-          datalist[i].status="Blocked";
-        }
       }
       //console.log(datalist);
       masterdatalist=datalist;
@@ -74,33 +61,17 @@ function Contentcourses(props)
     }
   }
   
-  async function updateuserinfo(userid) 
+  async function updatecourseinfo(courseid) 
   {
     try 
     {
-      let statusupdate="active";
-      if(statusinput.current.value=="Approved")
-      {
-        statusupdate="active";
-      }
-      else if(statusinput.current.value=="Pending")
-      {
-        statusupdate="apppending";
-      }
-      else if(statusinput.current.value=="Blocked")
-      {
-        statusupdate="blocked";
-      }
-      //console.log(usernameInput.current.value);
-      //console.log(userid);
-      //https://srlearnapi.onrender.com/updateuser/1705232820726/username10/password10/56789425/active
-      const dataresp = await axios.get('https://srlearnapi.onrender.com/updateuser/'+userid+'/'+usernameInput.current.value+'/'+passwordInput.current.value+'/'+phonenoInput.current.value+'/'+statusupdate);
+      ///updatecourse/:courseidentered/:coursenameentered/:videolinkentered/:descentered
+      const dataresp = await axios.get('https://srlearnapi.onrender.com/updatecourse/'+courseid+'/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedescriptionInput.current.value);
       const datarespval= await dataresp.data;
-      htmlcomment="Data updated successfully";
-      tempusername="";
-      tempphoneno="";
-      temppassword="";
-      tempstatus="Approved";
+      htmlcomment="Course updated successfully";
+      tempcoursename="";
+      tempvideolink="";
+      tempcoursedescription="";
       mode="Create";
       fetchData();
     } 
@@ -111,33 +82,17 @@ function Contentcourses(props)
     }
   }
 
-  async function createuserinfo() 
+  async function createcourse() 
   {
     try 
     {
-      let statusupdate="active";
-      if(statusinput.current.value=="Approved")
-      {
-        statusupdate="active";
-      }
-      else if(statusinput.current.value=="Pending")
-      {
-        statusupdate="apppending";
-      }
-      else if(statusinput.current.value=="Blocked")
-      {
-        statusupdate="blocked";
-      }
-      //console.log(usernameInput.current.value);
-      //console.log(userid);
-      //https://srlearnapi.onrender.com/updateuser/1705232820726/username10/password10/56789425/active
-      const dataresp = await axios.get('https://srlearnapi.onrender.com/createuser/'+usernameInput.current.value+'/'+passwordInput.current.value+'/'+phonenoInput.current.value+'/'+statusupdate);
+      // /createcourse/:coursenameentered/:videolinkentered/:descentered
+      const dataresp = await axios.get('https://srlearnapi.onrender.com/createcourse/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedescriptionInput.current.value);
       const datarespval= await dataresp.data;
-      htmlcomment="User created successfully";
-      tempusername="";
-      tempphoneno="";
-      temppassword="";
-      tempstatus="Approved";
+      htmlcomment="Course created successfully";
+      tempcoursename="";
+      tempvideolink="";
+      tempcoursedescription="";
       mode="Create";
       fetchData();
     } 
@@ -150,38 +105,38 @@ function Contentcourses(props)
   
     function oninputchange()
     {
-      //console.log(usernameInput.current.value);
-      tempusername=usernameInput.current.value;
-      tempphoneno=phonenoInput.current.value;
-      temppassword=passwordInput.current.value;
-      tempstatus=statusinput.current.value;
+      //console.log(coursedescriptionInput.current.value);
+      tempcoursename=coursenameInput.current.value;
+      tempvideolink=videolinkInput.current.value;
+      tempcoursedescription=coursedescriptionInput.current.value;
       setloginval(loginval+1);
     }
 
   
-    function updateuserbuttonclick(key)
+    function updatcoursebuttonclick(key)
     {
       //console.log(masterdatalist[key-1]);
-      tempusername=masterdatalist[key-1].username;
-      tempphoneno=masterdatalist[key-1].phoneno;
-      temppassword=masterdatalist[key-1].password;
-      tempstatus=masterdatalist[key-1].status;
+
+      tempcoursename=masterdatalist[key-1].coursename;
+      tempvideolink=masterdatalist[key-1].videolink;
+      tempcoursedescription=masterdatalist[key-1].description;
+
       keyselected=key;
       mode="Update";
       setloginval(loginval+1);
     }
 
-    function updateuserdetailsbuttonclick()
+    function updatecoursedetailsbuttonclick()
     {
       //console.log("keyselected: "+keyselected);
       //console.log(masterdatalist[keyselected-1]);
       if(mode=="Update")
       {
-        updateuserinfo(masterdatalist[keyselected-1]._id);
+        updatecourseinfo(masterdatalist[keyselected-1]._id);
       }
       else if(mode=="Create")
       {
-        createuserinfo();
+        createcourse();
       }
       
     }
@@ -229,9 +184,10 @@ function Contentcourses(props)
       {
         datalist=masterdatalist;
         //console.log(filterbyidinput.current.value);
-        datalist=datalist.filter((word) => word.username.includes(filterbyusernameinput.current.value) && word.phoneno.toLowerCase().includes(filterbyphonenoinput.current.value.toLowerCase()));
+        //datalist=datalist.filter((word) => word.coursename.includes(filterbycoursenameinput.current.value));
+        datalist=datalist.filter((word) => word.coursename.includes(filterbycoursenameinput.current.value) && word.description.toLowerCase().includes(filterbycoursecontentinput.current.value.toLowerCase()));
         datalist.sort(function(a,b){ var x = a.slno < b.slno? -1:1; return x; }); // ascending order
-        let sortkey={text:"",slno:"▲",username:"♢",phoneno:"♢",password:"♢",status:"♢",update:"♢"};
+        let sortkey={text:"",slno:"▲",coursename:"♢",videolink:"♢",coursedescription:"♢",update:"♢"};
         sortkey.text="slno"+" ASC";
         setloginval(loginval+1);
       }
@@ -242,14 +198,14 @@ function Contentcourses(props)
         if(sortkey.text.includes("ASC") && sortkey.text.includes(sortColumn))
         {
           datalist.sort(function(a,b){ var x = a[sortColumn] > b[sortColumn]? -1:1; return x; }); // descending order
-          sortkey={text:"",slno:"♢",username:"♢",phoneno:"♢",password:"♢",status:"♢",update:"♢"};
+          sortkey={text:"",slno:"♢",coursename:"♢",videolink:"♢",coursedescription:"♢",update:"♢"};
           sortkey.text=sortColumn+" DESC";
           sortkey[sortColumn]="▼";
         }
         else
         {
           datalist.sort(function(a,b){ var x = a[sortColumn] < b[sortColumn]? -1:1; return x; }); // ascending order
-          sortkey={text:"",slno:"♢",username:"♢",phoneno:"♢",password:"♢",status:"♢",update:"♢"};
+          sortkey={text:"",slno:"♢",coursename:"♢",videolink:"♢",coursedescription:"♢",update:"♢"};
           sortkey.text=sortColumn+" ASC";
           sortkey[sortColumn]="▲";
         }
@@ -257,93 +213,57 @@ function Contentcourses(props)
         setloginval(loginval+1);
       }
 
-  if (loading) {
+  if (loading || error) 
+  {
+    
+    let displaytext="";
+    if(loading)
+    {
+      displaytext="Loading. Please Wait";
+    }
+    else if(error)
+    {
+      displaytext="Network Error. Login and try Again or Contact Administrator";
+    }
+    
     return (<div>
         <div class="text-center row">
               <h1 >Course Management Module</h1>
               <br></br>
               <div class="col col-12 col-md-12">
-                
+                <div class="col col-12 col-md-3"></div>
                   <div class="col col-12 col-md-1">
-                    <label class="font-size: 1rem" >Username:</label>
+                    <label class="font-size: 1rem" >Course title:</label>
                   </div>
                   <div class="col col-12 col-md-2">
-                    <input type="text" onChange={function(){oninputchange()}} value ={tempusername || ""} ref={usernameInput} className="filterinput "  />
+                    <input type="text" onChange={function(){oninputchange()}} value ={tempcoursename || ""} ref={coursenameInput} className="filterinput "  />
                   </div>
                   <div class="col col-12 col-md-1">
-                    <label class="font-size: 1rem" >Password:</label>
+                    <label class="font-size: 1rem" >Video link:</label>
                   </div>
                   <div class="col col-12 col-md-2">
-                    <input value ={temppassword || ""}  onChange={function(){oninputchange()}} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
+                    <input type="text" onChange={function(){oninputchange()}} value ={tempvideolink || ""} ref={videolinkInput} className="filterinput "  />
                   </div>
                   <div class="col col-12 col-md-1">
-                    <label class="font-size: 1rem" >Phone no:</label>
+                    <button class="font-size: 2rem" onClick={function(){updatecoursedetailsbuttonclick()}}> {mode} </button>
                   </div>
-                  <div class="col col-12 col-md-2">
-                    <input value ={tempphoneno || ""}  onChange={function(){oninputchange()}} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
-                  </div>
+                  <div class="col col-12 col-md-3"></div>
+            </div>
+            <br></br>
+          <br></br>
+          <div class="col col-12 col-md-12">
+                <div class="col col-12 col-md-2"></div>
                   <div class="col col-12 col-md-1">
-                    <label class="font-size: 1rem" >Set Status:</label>
+                    <label class="font-size: 1rem" >Desription:</label>
                   </div>
-                  <div class="col col-12 col-md-1">
-                    <select value={tempstatus} onChange={function(){oninputchange()}} ref={statusinput} name="statusoptions" id="statusoptions">
-                          <option value="Approved">Approved</option>
-                          <option value="Pending">Pending</option>
-                          <option value="Blocked">Blocked</option>
-                    </select>
+                  <div class="col col-12 col-md-6">
+                    <textarea ref={coursedescriptionInput} onkeyup={function(){oninputchange()}} value={tempcoursedescription} name="paragraph_text" cols="100" rows="3" className="filterinputforcoursedescription"></textarea>
                   </div>
-                  <div class="col col-12 col-md-1">
-                    <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> {mode} </button>
-                  </div>
-                </div>
-        </div>
+                  <div class="col col-12 col-md-2"></div>
+          </div>
+          </div>
         <br></br>
-        <h2 class="text-center row">Loading. Please Wait</h2>
-    </div>);
-  }
-
-  if (error) {
-    return (<div>
-        <div class="text-center row">
-              <h1 >Course Management Module</h1>
-              <br></br>
-              <div class="col col-12 col-md-12">
-                
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Username:</label>
-                </div>
-                <div class="col col-12 col-md-2">
-                  <input type="text"  onChange={function(){oninputchange()}} ref={usernameInput} value ={tempusername || ""} className="filterinput " placeholder="" />
-                </div>
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Password:</label>
-                </div>
-                <div class="col col-12 col-md-2">
-                  <input  onChange={function(){oninputchange()}} value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
-                </div>
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Phone no:</label>
-                </div>
-                <div class="col col-12 col-md-2">
-                  <input  onChange={function(){oninputchange()}} value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
-                </div>
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Set Status:</label>
-                </div>
-                <div class="col col-12 col-md-1">
-                    <select value={tempstatus} onChange={function(){oninputchange()}} ref={statusinput} name="statusoptions" id="statusoptions">
-                          <option value="Approved">Approved</option>
-                          <option value="Pending">Pending</option>
-                          <option value="Blocked">Blocked</option>
-                    </select>
-                </div>
-                <div class="col col-12 col-md-1">
-                  <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> {mode} </button>
-                </div>
-              </div>
-        </div>
-        <br></br>
-        <h2 class="text-center row">Network Error. Login and try Again or Contact Administrator</h2>
+        <h2 class="text-center row">{displaytext}</h2>
     </div>);
   }
 
@@ -352,39 +272,36 @@ function Contentcourses(props)
           <h1 >Course Management Module</h1>
           <br></br>
           <div class="col col-12 col-md-12">
-                
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Username:</label>
-                </div>
-                <div class="col col-12 col-md-2">
-                  <input  onChange={function(){oninputchange()}} type="text" ref={usernameInput} className="filterinput " value ={tempusername || ""} placeholder=""  />
-                </div>
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Password:</label>
-                </div>
-                <div class="col col-12 col-md-2">
-                  <input  onChange={function(){oninputchange()}} value ={temppassword || ""} ref={passwordInput} type="text" className="filterinput " placeholder=""  />
-                </div>
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Phone no:</label>
-                </div>
-                <div class="col col-12 col-md-2">
-                  <input  onChange={function(){oninputchange()}} value ={tempphoneno || ""} ref={phonenoInput} type="text" className="filterinput " placeholder=""  />
-                </div>
-                <div class="col col-12 col-md-1">
-                  <label class="font-size: 1rem" >Set Status:</label>
-                </div>
-                <div class="col col-12 col-md-1">
-                  <select value={tempstatus} onChange={function(){oninputchange()}} ref={statusinput} name="statusoptions" id="statusoptions">
-                          <option value="Approved">Approved</option>
-                          <option value="Pending">Pending</option>
-                          <option value="Blocked">Blocked</option>
-                    </select>
-                </div>
-                <div class="col col-12 col-md-1">
-                  <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> {mode} </button>
-                </div>
-              </div>
+                <div class="col col-12 col-md-2"></div>
+                  <div class="col col-12 col-md-1">
+                    <label class="font-size: 1rem" >Course title:</label>
+                  </div>
+                  <div class="col col-12 col-md-3">
+                    <input type="text" onChange={function(){oninputchange()}} value ={tempcoursename || ""} ref={coursenameInput} className="filterinput "  />
+                  </div>
+                  <div class="col col-12 col-md-1">
+                    <label class="font-size: 1rem" >Video link:</label>
+                  </div>
+                  <div class="col col-12 col-md-2">
+                    <input type="text" onChange={function(){oninputchange()}} value ={tempvideolink || ""} ref={videolinkInput} className="filterinput "  />
+                  </div>
+                  <div class="col col-12 col-md-1">
+                    <button class="font-size: 2rem" onClick={function(){updatecoursedetailsbuttonclick()}}> {mode} </button>
+                  </div>
+                  <div class="col col-12 col-md-2"></div>
+          </div>
+          <br></br>
+          <br></br>
+          <div class="col col-12 col-md-12">
+                <div class="col col-12 col-md-2"></div>
+                  <div class="col col-12 col-md-1">
+                    <label class="font-size: 1rem" >Desription:</label>
+                  </div>
+                  <div class="col col-12 col-md-6">
+                    <textarea onChange={function(){oninputchange()}} ref={coursedescriptionInput} value={tempcoursedescription} name="paragraph_text" cols="100" rows="3" className="filterinputforcoursedescription"></textarea>
+                  </div>
+                  <div class="col col-12 col-md-2"></div>
+          </div>
           <br></br>
           <div class="col col-12 col-md-5"></div>
           <div class="col col-12 col-md-2">
@@ -396,35 +313,35 @@ function Contentcourses(props)
     <div className="Table" >
         <table>
             <tr>
-                <th className="thdailydata" onClick={function(){sortbycolumn("slno")}}>Sl.no {sortkey.slno}</th>
-                <th className="thdailydata" onClick={function(){sortbycolumn("username")}}>Username {sortkey.username}</th>
-                <th className="thdailydata" onClick={function(){sortbycolumn("phoneno")}}>Phone-no {sortkey.phoneno}</th>
-                <th className="thdailydata" onClick={function(){sortbycolumn("password")}}>Password {sortkey.password}</th>
-                <th className="thdailydata" onClick={function(){sortbycolumn("status")}}>Status {sortkey.status}</th>
+                <th className="thdailydata" onClick={function(){sortbycolumn("slno")}}>S.no {sortkey.slno}</th>
+                <th className="thdailydata" onClick={function(){sortbycolumn("coursename")}}>Course Name {sortkey.coursename}</th>
+                <th className="thdailydata" >Video link </th>
+                <th className="thdailydata" >Course description </th>
                 <th className="thdailydata" >Update </th>
             </tr>
             <tr>
                 <th className="thdailydata"> </th>
-                <th className="thdailydata"><input type="text" className="filterinput " ref={filterbyusernameinput} onChange={function(){filterbyidorname()}} placeholder="Filter by Username"  /></th>
-                <th className="thdailydata"><input type="text" className="filterinput " ref={filterbyphonenoinput} onChange={function(){filterbyidorname()}} placeholder="Filter by Phone-no" /></th>
+                <th className="thdailydata"><input type="text" className="filterinput " ref={filterbycoursenameinput} onChange={function(){filterbyidorname()}} placeholder="Filter by Course Name"  /></th>
                 <th className="thdailydata"> </th>
-                <th className="thdailydata"> </th>
+                <th className="thdailydata"><input type="text" className="filterinput " ref={filterbycoursecontentinput} onChange={function(){filterbyidorname()}} placeholder="Filter by Course Content"  /></th>
                 <th className="thdailydata"> </th>
             </tr>
             {datalist.map((val, key) => {
                 return (
                     <tr key={key}>
                         <td className="tddailydata">{val.slno}</td>
-                        <td className="tddailydata">{val.username}</td>
-                        <td className="tddailydata">{val.phoneno}</td>
-                        <td className="tddailydata">{val.password}</td>
-                        <td className="tddailydata">{val.status}</td>
-                        <td className="tddailydata"><button class="font-size: 2rem" onClick={function(){updateuserbuttonclick(val.slno)}}> Update </button></td>
+                        <td className="tddailydata">{val.coursename}</td>
+                        <td className="tddailydata">{val.videolink}</td>
+                        <td className="tdcoursedescription">{val.description}</td>
+                        <td className="tddailydata"><button class="font-size: 2rem" onClick={function(){updatcoursebuttonclick(val.slno)}}> Update </button></td>
                     </tr>
                 )
             })}
         </table>
     </div>
+    <br></br>
+    <br></br>
+    <br></br>
 </div>);
 }
 
