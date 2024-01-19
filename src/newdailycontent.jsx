@@ -15,6 +15,8 @@ let temppassword="";
 let tempstatus="Approved";
 let keyselected;
 
+let mode="Create";
+
 function Contentdaily(props) 
 {
   let usernameInput = React.createRef();
@@ -97,6 +99,7 @@ function Contentdaily(props)
       tempphoneno="";
       temppassword="";
       tempstatus="Approved";
+      mode="Create";
       fetchData();
     } 
     catch (error) 
@@ -125,6 +128,7 @@ function Contentdaily(props)
       temppassword=masterdatalist[key-1].password;
       tempstatus=masterdatalist[key-1].status;
       keyselected=key;
+      mode="Update";
       setloginval(loginval+1);
     }
 
@@ -242,7 +246,7 @@ function Contentdaily(props)
                     </select>
                   </div>
                   <div class="col col-12 col-md-1">
-                    <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> Update </button>
+                    <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> {mode} </button>
                   </div>
                 </div>
         </div>
@@ -287,7 +291,7 @@ function Contentdaily(props)
                     </select>
                 </div>
                 <div class="col col-12 col-md-1">
-                  <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> Update </button>
+                  <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> {mode} </button>
                 </div>
               </div>
         </div>
@@ -331,7 +335,7 @@ function Contentdaily(props)
                     </select>
                 </div>
                 <div class="col col-12 col-md-1">
-                  <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> Update </button>
+                  <button class="font-size: 2rem" onClick={function(){updateuserdetailsbuttonclick()}}> {mode} </button>
                 </div>
               </div>
           <br></br>
