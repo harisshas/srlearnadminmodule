@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 import Heading from "./header.jsx";
 import Footing from "./footer.jsx";
 import Contentlogin from "./logincontent.jsx";
-import Contentdaily from "./newdailycontent.jsx";
-//import Contentdaily from "./dailycontent_table.jsx";
-//import Contentdaily from "./dailycontent.jsx";
+import Contentusers from "./contentusers.jsx";
 import Contentperiod from "./periodiccontent.jsx";
 import Contentshiftallot from "./shiftallotcontent.jsx";
 
@@ -60,7 +58,7 @@ function App()
     return (
       <div class="container">
           <Heading currentpos="daily" onnavbuttonclickshiftallot={navbuttonclickshiftallot}  onnavbuttonclicklogout={navbuttonclicklogout} onnavbuttonclickperiod={navbuttonclickperiod}/>
-          <Contentdaily passondata={passondetails} changeintention={changeintention}/>
+          <Contentusers passondata={passondetails} changeintention={changeintention}/>
           <Footing />
         </div>
     );

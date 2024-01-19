@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios, * as others from 'axios';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 
 let sortkey={text:"",slno:"▲",username:"♢",phoneno:"♢",password:"♢",status:"♢",update:"♢"};
 let datalist=[];
 let masterdatalist=[];
-let displaydate="";
+
 let htmlcomment="";
 let tempusername="";
 let tempphoneno="";
@@ -17,7 +15,7 @@ let keyselected;
 
 let mode="Create";
 
-function Contentdaily(props) 
+function Contentusers(props) 
 {
   let usernameInput = React.createRef();
   let passwordInput = React.createRef();
@@ -426,4 +424,4 @@ function Contentdaily(props)
 </div>);
 }
 
-export default Contentdaily;
+export default Contentusers;
