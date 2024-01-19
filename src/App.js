@@ -5,8 +5,7 @@ import Heading from "./header.jsx";
 import Footing from "./footer.jsx";
 import Contentlogin from "./logincontent.jsx";
 import Contentusers from "./contentusers.jsx";
-import Contentperiod from "./periodiccontent.jsx";
-import Contentshiftallot from "./shiftallotcontent.jsx";
+import Contentcourses from "./contentcourses.jsx";
 
 var passondetails={};
 
@@ -27,11 +26,6 @@ function App()
   {
     //console.log("logout button clicked");
     changeintention("login",null);
-  }
-  function navbuttonclickshiftallot()
-  {
-    //console.log("logout button clicked");
-    changeintention("shiftallot",passondetails);
   }
   function navbuttonclickperiod()
   {
@@ -57,7 +51,7 @@ function App()
   {
     return (
       <div class="container">
-          <Heading currentpos="daily" onnavbuttonclickshiftallot={navbuttonclickshiftallot}  onnavbuttonclicklogout={navbuttonclicklogout} onnavbuttonclickperiod={navbuttonclickperiod}/>
+          <Heading currentpos="daily" onnavbuttonclicklogout={navbuttonclicklogout} onnavbuttonclickperiod={navbuttonclickperiod}/>
           <Contentusers passondata={passondetails} changeintention={changeintention}/>
           <Footing />
         </div>
@@ -67,23 +61,13 @@ function App()
   {
     return (
       <div class="container">
-          <Heading currentpos="period" onnavbuttonclickshiftallot={navbuttonclickshiftallot} onnavbuttonclicklogout={navbuttonclicklogout} onnavbuttonclickdaily={navbuttonclickdaily}/>
-          <Contentperiod passondata={passondetails} changeintention={changeintention}/>
+          <Heading currentpos="period" onnavbuttonclicklogout={navbuttonclicklogout} onnavbuttonclickdaily={navbuttonclickdaily}/>
+          <Contentcourses passondata={passondetails} changeintention={changeintention}/>
           <Footing />
         </div>
     );
   }
-  else if(intention=="shiftallot")
-  {
-    return (
-      <div class="container">
-          <Heading currentpos="shiftallot" onnavbuttonclicklogout={navbuttonclicklogout} onnavbuttonclickperiod={navbuttonclickperiod} onnavbuttonclickdaily={navbuttonclickdaily}/>
-          <Contentshiftallot passondata={passondetails} changeintention={changeintention}/>
-          <Footing />
-        </div>
-    );
-  }
-  
+ 
 }
 
 export default App;

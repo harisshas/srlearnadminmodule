@@ -16,8 +16,7 @@ export default function Heading(props)
             <p class="navbar-brand">SRLearn Mobile Application Administrator Module</p>
           </div>
           <ul class="nav navbar-nav pull-right">
-            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickshiftallot()}}>Allot Shifts</button></li>
-            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickperiod()}}>Periodic report</button></li>
+            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickperiod()}}>Manage Courses</button></li>
             <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclicklogout()}}>Logout</button></li>
           </ul>     
         </div>
@@ -34,26 +33,7 @@ export default function Heading(props)
             <p class="navbar-brand">SRLearn Mobile Application Administrator Module</p>
           </div>
           <ul class="nav navbar-nav pull-right">
-            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickshiftallot()}}>Allot Shifts</button></li>
-            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickdaily()}}>Daily report</button></li>
-            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclicklogout()}}>Logout</button></li>
-          </ul>     
-        </div>
-      </nav>
-      );
-    }
-    if(props.currentpos==="shiftallot")
-    {
-      //console.log("changing intention to shiftallot in header");
-      return (
-        <nav class="navbar navbar-default header">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-brand">SRLearn Mobile Application Administrator Module</p>
-          </div>
-          <ul class="nav navbar-nav pull-right">
-             <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickperiod()}}>Periodic report</button></li>
-            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickdaily()}}>Daily report</button></li>
+            <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclickdaily()}}>Manage Users</button></li>
             <li><button class="btn navbar-btn navbarbuttoncust" onClick={function(){props.onnavbuttonclicklogout()}}>Logout</button></li>
           </ul>     
         </div>
