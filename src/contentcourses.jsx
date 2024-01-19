@@ -66,7 +66,7 @@ function Contentcourses(props)
     try 
     {
       let currentcoursedesc=coursedescriptionInput.current.value;
-      coursedesc_replacedspaces=currentcoursedesc.replaceall(" ", "_");
+      let coursedesc_replacedspaces=currentcoursedesc.replaceall(" ", "_");
       ///updatecourse/:courseidentered/:coursenameentered/:videolinkentered/:descentered
       const dataresp = await axios.get('https://srlearnapi.onrender.com/updatecourse/'+courseid+'/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedesc_replacedspaces);
       const datarespval= await dataresp.data;
@@ -90,7 +90,7 @@ function Contentcourses(props)
     {
       // /createcourse/:coursenameentered/:videolinkentered/:descentered
       let currentcoursedesc=coursedescriptionInput.current.value;
-      coursedesc_replacedspaces=currentcoursedesc.replaceall(" ", "_");
+      let coursedesc_replacedspaces=currentcoursedesc.replaceall(" ", "_");
       const dataresp = await axios.get('https://srlearnapi.onrender.com/createcourse/'+coursenameInput.current.value+'/'+videolinkInput.current.value+'/'+coursedesc_replacedspaces);
       const datarespval= await dataresp.data;
       htmlcomment="Course created successfully";
