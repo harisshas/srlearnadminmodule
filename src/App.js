@@ -43,7 +43,7 @@ function App()
   function navbuttonclickdaily()
   {
     //console.log("logout button clicked");
-    changeintention("daily",passondetails);
+    changeintention("users",passondetails);
   }
   if(intention=="login")
   {

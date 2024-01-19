@@ -94,6 +94,9 @@ function Contentdaily(props)
       const dataresp = await axios.get('https://srlearnapi.onrender.com/updateuser/'+userid+'/'+usernameInput.current.value+'/'+passwordInput.current.value+'/'+phonenoInput.current.value+'/'+statusupdate);
       const datarespval= await dataresp.data;
       htmlcomment="Data updated successfully";
+      tempusername="";
+      tempphoneno="";
+      temppassword="";
       fetchData();
     } 
     catch (error) 
