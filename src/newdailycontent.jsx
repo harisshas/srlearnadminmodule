@@ -33,8 +33,7 @@ function Contentdaily(props)
   
   useEffect(() => 
   {
-    
-    fetchData(gettodaysdate(),props.passondata);
+     fetchData(gettodaysdate(),props.passondata);
   }, []);
 
   async function fetchData() 
@@ -112,7 +111,7 @@ function Contentdaily(props)
       tempusername=usernameInput.current.value;
       tempphoneno=phonenoInput.current.value;
       temppassword=passwordInput.current.value;
-
+      tempstatus=statusinput.current.value;
       setloginval(loginval+1);
     }
 
@@ -235,7 +234,7 @@ function Contentdaily(props)
                     <label class="font-size: 1rem" >Set Status:</label>
                   </div>
                   <div class="col col-12 col-md-1">
-                    <select ref={statusinput} name="statusoptions" id="statusoptions">
+                    <select value={tempstatus} onChange={function(){oninputchange()}} ref={statusinput} name="statusoptions" id="statusoptions">
                           <option value="Approved">Approved</option>
                           <option value="Pending">Pending</option>
                           <option value="Blocked">Blocked</option>
@@ -280,7 +279,7 @@ function Contentdaily(props)
                   <label class="font-size: 1rem" >Set Status:</label>
                 </div>
                 <div class="col col-12 col-md-1">
-                    <select ref={statusinput} name="statusoptions" id="statusoptions">
+                    <select value={tempstatus} onChange={function(){oninputchange()}} ref={statusinput} name="statusoptions" id="statusoptions">
                           <option value="Approved">Approved</option>
                           <option value="Pending">Pending</option>
                           <option value="Blocked">Blocked</option>
@@ -324,7 +323,7 @@ function Contentdaily(props)
                   <label class="font-size: 1rem" >Set Status:</label>
                 </div>
                 <div class="col col-12 col-md-1">
-                  <select ref={statusinput} name="statusoptions" id="statusoptions">
+                  <select value={tempstatus} onChange={function(){oninputchange()}} ref={statusinput} name="statusoptions" id="statusoptions">
                           <option value="Approved">Approved</option>
                           <option value="Pending">Pending</option>
                           <option value="Blocked">Blocked</option>
